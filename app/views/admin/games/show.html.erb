@@ -1,2 +1,31 @@
-<h1>Admin::Games#show</h1>
-<p>Find me in app/views/admin/games/show.html.erb</p>
+<div class="container">
+  <h3>ゲーム詳細</h3>
+  <div class="row">
+    <div class="col-md-4">
+<p><%#= image_tag @game.get_image, size:"300x200" %></p>
+ <%= image_tag @game.image, size: "200x200" %>
+    </div>
+    <div class="col-md-5">
+      <table class="table games">
+        <tr>
+          <th>商品</th>
+          <td><%= @game.name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @game.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%#= @game.genre.name %></td>
+        </tr>
+      </table>
+      <br>
+      <%= link_to edit_admin_game_path(@game.id) do %>
+        <button type="button" class="btn btn-success">
+          編集する
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>

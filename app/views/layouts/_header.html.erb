@@ -1,0 +1,64 @@
+<header class="shadow sticky-top bg-light pb-md-2">
+  <nav class="navbar navbar-expand-md navbar-light py-0">
+    <a class="navbar-brand font-weight-normal" href="/">GAMEZONE </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse py-2" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %><!-- ユーザーがログインしていた時の処理 -->
+          <p class="my-auto">ようこそ、<%= current_customer.nickname %>さん！</p>
+          <% if current_customer.email != "guest@example.com" %>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to 'マイページ', customer_path(current_customer), method: :get, class: 'nav-link text-secondary border rounded' %>
+          </li>
+          <% end %>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to 'グループ', groups_path, method: :get, class: 'nav-link text-secondary border rounded' %>
+          </li>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to 'ゲームチャット', games_path, method: :get, class: 'nav-link text-secondary border rounded' %>
+          </li>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-secondary border rounded' %>
+          </li>
+        <% elsif admin_signed_in? %><!-- 管理者がログインしていた時の処理 -->
+          <p class="my-auto">管理者ログイン中</p>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to '会員一覧', admin_customers_path, method: :get, class: 'nav-link text-secondary border rounded' %>
+          </li>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to 'ゲーム名作成', admin_games_path, method: :get, class: 'nav-link text-secondary border rounded' %>
+          </li>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to 'チャット履歴一覧', admin_games_comments_path, method: :get, class: 'nav-link text-secondary border rounded' %>
+          </li>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-secondary border rounded' %>
+          </li>
+        <% else %><!-- ユーザーがログインしていなかった時の処理 -->
+          <li class="nav-item my-auto mr-1">
+            <%= link_to 'ゲームチャット', games_path, method: :get, class: 'nav-link text-secondary border rounded' %>
+          </li>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to '新規登録', new_customer_registration_path, method: :get, class: 'nav-link text-secondary border rounded' %>
+          </li>
+          <li class="nav-item my-auto mr-1">
+            <%= link_to 'ログイン', new_customer_session_path, method: :get, class: 'nav-link text-secondary border rounded' %>
+          </li>
+          <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: 'nav-link text-secondary border rounded' %>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  <div class="row m-0">
+    <form class="form-inline ml-auto mr-4">
+      <div class="input-group">
+        <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+        </div>
+      </div>
+    </form>
+  </div>
+</header>

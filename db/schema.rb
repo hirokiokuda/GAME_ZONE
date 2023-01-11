@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 2023_01_10_073629) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "nickname", default: "", null: false
+    t.integer "gender", default: 0, null: false
+    t.string "introduction", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -65,8 +68,12 @@ ActiveRecord::Schema.define(version: 2023_01_10_073629) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "game_comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_favorites_on_customer_id"
+    t.index ["game_comment_id"], name: "index_favorites_on_game_comment_id"
   end
 
   create_table "game_comments", force: :cascade do |t|
@@ -80,20 +87,34 @@ ActiveRecord::Schema.define(version: 2023_01_10_073629) do
   end
 
   create_table "games", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "introduction", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.text "introduction"
+    t.string "image_id"
+    t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "groupusers", force: :cascade do |t|
+    t.integer "cust_id"
+    t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["cust_id"], name: "index_groupusers_on_cust_id"
+    t.index ["group_id"], name: "index_groupusers_on_group_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favorites", "customers"
+  add_foreign_key "favorites", "game_comments"
+  add_foreign_key "groupusers", "custs"
+  add_foreign_key "groupusers", "groups"
 end

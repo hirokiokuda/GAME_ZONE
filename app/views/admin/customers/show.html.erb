@@ -1,2 +1,23 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div><%= flash[:notice] %></div>
+
+<h4><%= @customer.nickname %>さんの会員詳細</h4>
+  <table class="table col-md-10 offset-md-1 table-borderless">
+    <tbody>
+      <tr>
+        <th class="w-25 font-weight-normal">会員ID</th>
+        <td><%= @customer.id %></td>
+      </tr>
+        <th class="w-25 font-weight-normal">
+          <label for="inputEmail">メールアドレス</label>
+        </th>
+        <td>
+          <a>
+            <%= link_to '編集する', edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
+          </a>
+          <a class="pl-md-4">
+            <%= link_to 'コメント履歴詳細を見る', admin_games_comment_path, class: "btn btn-primary" %>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>

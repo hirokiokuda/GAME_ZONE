@@ -1,0 +1,5 @@
+<% @games_comments.each do |games_comment| %>
+        <%= link_to "管理者用編集", edit_post_path(t.id) %>
+        <%= link_to "管理者用削除", post_path(t.id), method: :delete %>
+      <% end %>
+<% end %>

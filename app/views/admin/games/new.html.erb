@@ -1,2 +1,31 @@
-<h1>Admin::Games#new</h1>
-<p>Find me in app/views/admin/games/new.html.erb</p>
+<div class="container">
+  <h3>ゲーム新規登録</h3>
+
+  <div class="row">
+    <%= form_with model: @game, url: admin_games_path, local: true do |f| %>
+    <div class="col">
+      <%= render "public/shared/error_messages", resource: @game %>
+    </div>
+      <table class="games">
+          <tr>
+          <th>イメージ画像</th>
+          <td><%= f.file_field :image %></td>
+        </tr>
+        <tr>
+          <th>ゲーム名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th>ゲーム説明</th>
+          <td><%= f.text_area :introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%#= f.collection_select :genre_id, @genres, :id, :name %></td>
+        </tr>
+      </table>
+      <br>
+      <%= f.submit "新規登録" , class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
