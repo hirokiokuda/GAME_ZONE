@@ -16,14 +16,14 @@ Rails.application.routes.draw do
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   scope module: :public do
-    resources :groups
-    resources :games_comments, only: [:index, :update, :create] do
+    resources :games_comments, only: [:create, :destroy] do
       resource :favorites, only: [:create, :destroy]
     end
-    resources :customers, only: [:show, :edit, :update] do
+    resources :customers, only: [:index, :show, :edit, :update] do
       get :favorites, on: :collection
     end
     resources :games, only: [:index, :show]
+    resources :groups
   end
 
   namespace :admin do

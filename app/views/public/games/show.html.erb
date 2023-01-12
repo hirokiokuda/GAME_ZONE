@@ -1,2 +1,13 @@
-<h1>Public::Games#show</h1>
-<p>Find me in app/views/public/games/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="m-md-5 d-inline-block">
+      <p><%= image_tag @game.image, size:"300x200" %></p>
+    </div>
+    <div class="m-md-5">
+      <strong><%= @game.name %></strong>
+      <p class="mt-md-3"><%= @game.introduction %></p>
+      <%= render "game_comments/index", game: @game %>
+      <%= render "game_comments/form", game: @game, game_comment: @game_comment %>
+    </div>
+  </div>
+</div>

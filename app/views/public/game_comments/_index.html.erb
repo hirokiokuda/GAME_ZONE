@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+      <% game.game_comments.each do |game_comment| %>
+      <tr>
+        
+        <td>
+          <%= link_to customer_path(game_comment.customer) do %>
+            <%= game_comment.customer.nickname %>
+          <% end %>
+        </td>
+        <td><%= game_comment.comment %></td>
+        <td>
+          <% if game_comment.customer == current_customer %>
+            <%= link_to "Destroy", games_comment_path(game, game_comment), method: :delete, class: "btn btn-danger pull-right" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

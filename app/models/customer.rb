@@ -4,7 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :games
-  has_many :groupusers   #ここ！
+  has_many :groupusers
   has_many :groups, through: :groupusers
   has_many :favorites, dependent: :destroy
   has_many :game_comments, dependent: :destroy

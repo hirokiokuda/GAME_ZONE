@@ -14,7 +14,7 @@ class Public::GroupController < ApplicationController
   end
 
   def index
-    @game = Game.new
+   
     @groups = Group.all
   end
 
