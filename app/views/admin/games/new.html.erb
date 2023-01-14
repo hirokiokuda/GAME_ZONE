@@ -20,9 +20,17 @@
           <td><%= f.text_area :introduction %></td>
         </tr>
         <tr>
-          <th>ジャンル</th>
-          <td><%#= f.collection_select :genre_id, @genres, :id, :name %></td>
-        </tr>
+        <div class="check_box">
+          <th>タグ</th>
+          <%#= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                <div>
+                  <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                  <%# end %>
+                </div>
+          <% end %>
+        </div>
       </table>
       <br>
       <%= f.submit "新規登録" , class: 'btn btn-primary' %>

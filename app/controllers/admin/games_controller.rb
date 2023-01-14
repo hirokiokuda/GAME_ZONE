@@ -35,7 +35,7 @@ class Admin::GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:name, :introduction, :image,)
+    params.require(:game).permit(:name, :introduction, :image, tag_ids: [])
   end
 
 end

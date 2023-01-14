@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_10_073629) do
+ActiveRecord::Schema.define(version: 2023_01_13_050918) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -89,6 +89,15 @@ ActiveRecord::Schema.define(version: 2023_01_10_073629) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "game_tags", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_game_tags_on_post_id"
+    t.index ["tag_id"], name: "index_game_tags_on_tag_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "introduction", default: "", null: false
@@ -106,18 +115,26 @@ ActiveRecord::Schema.define(version: 2023_01_10_073629) do
   end
 
   create_table "groupusers", force: :cascade do |t|
-    t.integer "cust_id"
     t.integer "group_id"
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cust_id"], name: "index_groupusers_on_cust_id"
+    t.index ["customer_id"], name: "index_groupusers_on_customer_id"
     t.index ["group_id"], name: "index_groupusers_on_group_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "customers"
   add_foreign_key "favorites", "game_comments"
-  add_foreign_key "groupusers", "custs"
+  add_foreign_key "game_tags", "posts"
+  add_foreign_key "game_tags", "tags"
+  add_foreign_key "groupusers", "customers"
   add_foreign_key "groupusers", "groups"
 end

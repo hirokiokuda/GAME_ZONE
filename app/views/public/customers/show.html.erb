@@ -16,6 +16,7 @@
 <div class="row mb-4">
   <div class="col-md-8">
     <table class="table table-bordered table-responsive-md">
+      <%#= image_tag @customer.get_profile_image(100,100) %>
       <tr>
         <th class="table-active" style="width:25%">ニックネーム</td>
         <td style="width:75%"><%= current_customer.nickname %> </td>
@@ -23,6 +24,10 @@
       <tr>
         <th class="table-active">メールアドレス</td>
         <td><%= current_customer.email %></td>
+      </tr>
+      <tr>
+        <th class="table-active">自己紹介</td>
+        <td><%= current_customer.introduction %></td>
       </tr>
     </table>
   </div>
@@ -33,6 +38,6 @@
     <h5 class="font-weight-bold">コメント履歴</h5>
   </div>
   <div class="col mr-auto">
-    <%= link_to "一覧を見る", games_comment_path, class: "btn btn-primary btn-sm px-3 col-md-3" %>
+    <%#= link_to "一覧を見る", games_comment_path, class: "btn btn-primary btn-sm px-3 col-md-3" %>
   </div>
 </div>

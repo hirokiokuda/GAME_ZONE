@@ -14,16 +14,20 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+  get "search" => "searches#search"
 
   scope module: :public do
-    resources :games_comments, only: [:create, :destroy] do
-      resource :favorites, only: [:create, :destroy]
-    end
     resources :customers, only: [:index, :show, :edit, :update] do
       get :favorites, on: :collection
     end
-    resources :games, only: [:index, :show]
-    resources :groups
+    resources :games, only: [:index, :show] do
+      resources :game_comments, only: [:create, :destroy, :show] do
+        resource :favorites, only: [:create, :destroy]
+      end
+    end
+    resources :groups do
+      get "join" => "groups#join"
+    end
   end
 
   namespace :admin do

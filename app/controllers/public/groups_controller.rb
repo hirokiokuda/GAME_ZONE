@@ -1,4 +1,5 @@
-class Public::GroupController < ApplicationController
+class Public::GroupsController < ApplicationController
+
   def new
     @group = Group.new
   end
@@ -6,6 +7,7 @@ class Public::GroupController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_customer.id
+    @group.customers << current_customer
     if @group.save
       redirect_to groups_path
     else
@@ -14,7 +16,7 @@ class Public::GroupController < ApplicationController
   end
 
   def index
-   
+
     @groups = Group.all
   end
 
@@ -30,6 +32,9 @@ class Public::GroupController < ApplicationController
   end
 
   def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to groups_path
   end
 
   def show
@@ -40,7 +45,7 @@ class Public::GroupController < ApplicationController
   def group_params
     params.require(:group).permit(:name, :introduction, :image)
   end
-  
+
   def ensure_correct_user
     @group = Group.find(params[:id])
     unless @group.owner_id == current_customer.id

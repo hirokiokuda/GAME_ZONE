@@ -23,7 +23,7 @@
         <tr>
           <td><%= game.id %></td>
           <td><%= link_to game.name, admin_game_path(game.id) %></td>
-          <td><%#= item.genre.name %></td>
+          <td><%#= game.tag.name %></td>
         </tr>
       <% end %>
     </tbody>

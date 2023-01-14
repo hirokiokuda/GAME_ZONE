@@ -6,8 +6,11 @@
     <div class="m-md-5">
       <strong><%= @game.name %></strong>
       <p class="mt-md-3"><%= @game.introduction %></p>
-      <%= render "game_comments/index", game: @game %>
-      <%= render "game_comments/form", game: @game, game_comment: @game_comment %>
+      <%# @game.tags.each do |tag| %>
+      <%#= tag.name %>
+      <%# end %>
+      <%= render "public/game_comments/index", game: @game, game_comments: @game_comments %>
+      <%= render "public/game_comments/form", game: @game %>
     </div>
   </div>
 </div>

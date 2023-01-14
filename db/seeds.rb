@@ -9,3 +9,11 @@ Admin.create!(
    email: 'admin@admin',
    password: 'testtest'
 )
+
+Tag.create([
+    { name: 'FPS' },
+    { name: 'アクション' },
+    { name: 'パーティー'},
+    { name: 'MMO'},
+    { name: 'RPG'},
+    ])

@@ -4,7 +4,9 @@ class Public::GameCommentsController < ApplicationController
     @game = Game.new
   end
 
-  def update
+  def destroy
+    GameComment.find_by(id: params[:id], game_id: params[:game_id]).destroy
+    redirect_to request.referer
   end
 
   def create
@@ -16,14 +18,14 @@ class Public::GameCommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-  
+
   def show
     @game_comment = GameComment.find(params[:id])
   end
 
 
   private
-  def post_params
-    params.require(:game_comment).permit(:content)
+  def game_comment_params
+    params.permit(:content, :game_id, :comment)
   end
 end
