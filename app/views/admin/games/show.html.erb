@@ -16,7 +16,10 @@
         </tr>
         <tr>
           <th>ジャンル</th>
-          <td><%#= @game.genre.name %></td>
+          <td><% @game.tags.each do |tag| %>
+              <%= tag.name %>
+              <% end %>
+          </td>
         </tr>
       </table>
       <br>

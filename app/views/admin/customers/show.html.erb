@@ -10,7 +10,7 @@
         <th class="w-25 font-weight-normal">
           <label for="inputEmail">メールアドレス</label>
         </th>
-        <td>
+        <td><%= @customer.email %></td>
           <a>
             <%= link_to '編集する', edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
           </a>

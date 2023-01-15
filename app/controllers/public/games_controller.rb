@@ -1,7 +1,6 @@
 class Public::GamesController < ApplicationController
   def index
-    @games = Game.page(params[:page])
-    #games = params[:tag_id].present? ? Tag.find(params[:tag_id]).games : game.all
+    @games = params[:tag_id].present? ? Tag.find(params[:tag_id]).games : Game.all
   end
 
   def show

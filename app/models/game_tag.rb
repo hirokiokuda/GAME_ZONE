@@ -1,4 +1,4 @@
 class GameTag < ApplicationRecord
-  belongs_to :post
+  belongs_to :game
   belongs_to :tag
 end

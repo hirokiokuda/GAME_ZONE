@@ -5,7 +5,7 @@ class Admin::GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @items = Game.all
+    @games = Game.all
   end
 
   def create
