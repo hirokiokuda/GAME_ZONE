@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     end
     resources :groups do
       get "join" => "groups#join"
+      get "leave" => "groups#leave"
     end
   end
 

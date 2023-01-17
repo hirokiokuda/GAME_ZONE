@@ -20,6 +20,15 @@ class Public::GroupsController < ApplicationController
     @groups = Group.all
   end
 
+  def join
+    @groupuser = current_customer.groupusers.new(group_id: params[:group_id])
+    if @groupuser.save
+      redirect_to groups_path
+    else
+      render 'new'
+    end
+  end
+
   def edit
   end
 
@@ -34,6 +43,12 @@ class Public::GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
+    redirect_to groups_path
+  end
+
+  def leave
+    @groupuser = current_customer.groupusers.where(group_id: params[:group_id]).first
+    @groupuser.destroy
     redirect_to groups_path
   end
 
