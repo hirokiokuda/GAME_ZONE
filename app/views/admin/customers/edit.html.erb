@@ -11,6 +11,24 @@
         <th class="w-25 font-weight-normal">
           <label for="inputEmail">メールアドレス</label>
         </th>
+        <td>
+          <%= f.text_field :email, id:"inputEmail", style:"width:30%", class:"form-control" %>
+        </td>
+      </tr>
+      <tr>
+        <th class="w-25 font-weight-normal">
+          <label for="inputIsDeleted">会員ステータス</label>
+        </th>
+        <td>
+          <a class="mr-md-4">
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効", class:"text text-success" %>
+          </a>
+          <a>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会", class:"text-secondary" %>
+          </a>
+        </td>
       </tr>
       <tr>
         <th class="w-25"></th>

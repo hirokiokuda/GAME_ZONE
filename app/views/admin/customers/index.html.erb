@@ -5,6 +5,7 @@
         <th>会員ID</th>
         <th>ニックネーム</th>
         <th>メールアドレス</th>
+        <th>ステータス</th>
       </tr>
     </thead>
     
@@ -14,6 +15,13 @@
           <td><%= customer.id %></td>
           <td><%= link_to customer.nickname, admin_customer_path(customer.id) %></td>
           <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_deleted %>
+              <strong class="text-secondary">退会</strong>
+            <% else %>
+              <strong class="text-success">有効</strong>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

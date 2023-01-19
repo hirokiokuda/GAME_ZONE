@@ -1,2 +1,21 @@
-<h1>Admin::GamesComments#show</h1>
-<p>Find me in app/views/admin/games_comments/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>チャット履歴一覧</h3>
+<table>
+  <tbody>
+    <% @game_comments.each do |game_comment| %>
+      <tr>
+        <td>
+          <%= link_to customer_path(game_comment.customer) do %>
+            <%= game_comment.customer.nickname %>
+          <% end %>
+        </td>
+        <td><%= game_comment.comment %></td>
+        <td>
+          <%= link_to "管理者用削除", admin_games_comment_path(game_comment.id), method: :delete %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

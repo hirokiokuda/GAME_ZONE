@@ -7,10 +7,29 @@
         <th class="w-25 font-weight-normal">会員ID</th>
         <td><%= @customer.id %></td>
       </tr>
+      <tr>
+        <th class="w-25 font-weight-normal">ニックネーム</th>
+        <td><%= @customer.nickname %></td>
+      </tr>
+      <tr>
         <th class="w-25 font-weight-normal">
           <label for="inputEmail">メールアドレス</label>
         </th>
         <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <th class="w-25 font-weight-normal">会員ステータス</th>
+        <td>
+          <% if @customer.is_deleted %>
+            <strong class="text-secondary">退会</strong>
+          <% else %>
+            <strong class="text-success">有効</strong>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td>
           <a>
             <%= link_to '編集する', edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
           </a>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h3 class="font-weight-bold">チャット履歴一覧</h3>
+      <h3>チャット履歴一覧</h3>
 <table>
   <tbody>
     <% @game_comments.each do |game_comment| %>
@@ -13,7 +13,7 @@
         </td>
         <td><%= game_comment.comment %></td>
         <td>
-          <%#= link_to "管理者用削除", post_path(t.id), method: :delete %>
+          <%= link_to "管理者用削除", admin_games_comment_path(game_comment.id), method: :delete %>
         </td>
       </tr>
       <% end %>

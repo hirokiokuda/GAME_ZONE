@@ -59,7 +59,7 @@ gem 'kaminari','~> 1.2.1'
 
 gem 'dotenv-rails'
 group :production do
-  gem 'mysql2'
+  #gem 'mysql2'
 end
 
 gem "net-smtp"
