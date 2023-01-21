@@ -15,7 +15,7 @@
           <td><%= @group.name %></td>
           <td><%= @group.introduction %></td>
           <td><% @group.customers.each do |member| %>
-                <%= member.nickname %><br>
+                <%= member.nickname %><%= image_tag member.get_profile_image(70,70) %><br>
               <% end %>
           </td>
           <td>

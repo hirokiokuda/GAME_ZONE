@@ -1,6 +1,7 @@
 <div class="row mb-4">
   <div class="col-md-3">
     <h3 class="bg-light text-center">マイページ</h3>
+    
   </div>
 </div>
 
@@ -8,15 +9,13 @@
   <div class="col-md-2">
     <h5 class="font-weight-bold">登録情報</h5>
   </div>
-  <div class="col mr-auto">
-    <%= link_to "編集する", edit_customer_path, class: "btn btn-success btn-sm px-3 col-md-2" %>
-  </div>
+  
 </div>
 
 <div class="row mb-4">
   <div class="col-md-8">
     <table class="table table-bordered table-responsive-md">
-      <%#= image_tag @customer.get_profile_image(100,100) %>
+      <%= image_tag @customer.get_profile_image(100,100) %>
       <tr>
         <th class="table-active" style="width:25%">ニックネーム</td>
         <td style="width:75%"><%= current_customer.nickname %> </td>
@@ -32,7 +31,9 @@
     </table>
   </div>
 </div>
-
+<div class="col mr-auto">
+    <%= link_to "編集する", edit_customer_path, class: "btn btn-success btn-sm px-3 col-md-2" %>
+  </div>
 <div class="row py-3">
   <div class="col-md-2">
     <h5 class="font-weight-bold">いいね一覧</h5>
