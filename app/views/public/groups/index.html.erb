@@ -1,6 +1,8 @@
 <div class='col-md-8 offset-md-1'>
       <h2>Groups</h2>
+      <% if current_customer.email != "guest@example.com" %>
       <div><%=link_to "グループを作成する",new_group_path %></div>
+      <% end %>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
