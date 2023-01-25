@@ -1,4 +1,5 @@
 class Admin::GamesCommentsController < ApplicationController
+  before_action :authenticate_admin!
   def show
     @game_comments = Customer.find(params[:id]).game_comments
     

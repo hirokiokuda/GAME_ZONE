@@ -32,7 +32,9 @@
   </div>
 </div>
 <div class="col mr-auto">
+    <% if @customer_id = current_customer.id %>
     <%= link_to "編集する", edit_customer_path, class: "btn btn-success btn-sm px-3 col-md-2" %>
+    <% end %>
   </div>
 <div class="row py-3">
   <div class="col-md-2">

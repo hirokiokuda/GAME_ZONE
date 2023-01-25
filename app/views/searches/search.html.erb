@@ -6,7 +6,7 @@
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
-          <td><%= customer.nickname %></td>
+          <td><%= link_to customer.nickname, customer_path(customer.id) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -15,7 +15,7 @@
     <tbody>
       <% @games.each do |game| %>
         <tr>
-          <td><%= game.name %></td>
+          <td><%= link_to game.name, game_path(game.id) %></td>
           <td><%= game.introduction%></td>
         </tr>
       <% end %>

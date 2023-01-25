@@ -1,4 +1,7 @@
 <%= form_with model:group, local: true do |f| %>
+<div class="col">
+      <%= render "public/shared/error_messages", resource: @group %>
+    </div>
   <div class="form-group">
     <%= f.label :グループ名 %>
     <%= f.text_field :name, class: 'form-control' %>

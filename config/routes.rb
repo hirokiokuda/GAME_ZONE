@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get "/" => "homes#top"
     resources :customers, except: [:new, :create, :destroy]
     resources :games, except: [:destroy]
     resources :games_comments, only: [:show, :edit, :update, :index, :destroy]

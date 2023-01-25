@@ -5,7 +5,11 @@ class Public::CustomersController < ApplicationController
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:game_comment_id)  # ログイン中のユーザーのお気に入りのgame_comment_idカラムを取得
     @favorite_list = GameComment.find(favorites)     # game_commentテーブルから、お気に入り登録済みのレコードを取得
   end
-
+  
+  def index
+    @customers = Customer.all
+  end
+  
   def edit
     @customer = current_customer
   end

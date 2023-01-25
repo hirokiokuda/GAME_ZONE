@@ -1,4 +1,5 @@
 class Admin::GamesController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @games = Game.all
   end
