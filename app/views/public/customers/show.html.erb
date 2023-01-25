@@ -1,6 +1,6 @@
 <div class="row mb-4">
   <div class="col-md-3">
-    <h3 class="bg-light text-center">マイページ</h3>
+    <h3 class="bg-light text-center">会員詳細</h3>
     
   </div>
 </div>
@@ -18,21 +18,21 @@
       <%= image_tag @customer.get_profile_image(100,100) %>
       <tr>
         <th class="table-active" style="width:25%">ニックネーム</td>
-        <td style="width:75%"><%= current_customer.nickname %> </td>
+        <td style="width:75%"><%= @customer.nickname %> </td>
       </tr>
       <tr>
         <th class="table-active">メールアドレス</td>
-        <td><%= current_customer.email %></td>
+        <td><%= @customer.email %></td>
       </tr>
       <tr>
         <th class="table-active">自己紹介</td>
-        <td><%= current_customer.introduction %></td>
+        <td><%= @customer.introduction %></td>
       </tr>
     </table>
   </div>
 </div>
 <div class="col mr-auto">
-    <% if @customer_id = current_customer.id %>
+    <% if current_customer.id == @customer.id %>
     <%= link_to "編集する", edit_customer_path, class: "btn btn-success btn-sm px-3 col-md-2" %>
     <% end %>
   </div>

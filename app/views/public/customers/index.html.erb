@@ -13,7 +13,7 @@
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
-          <td><%= image_tag customer.get_profile_image(70,70) %><%= link_to customer.nickname, customer_path(customer.id) %></td>
+          <td><%= image_tag customer.get_profile_image(70,70) %><%= link_to customer.nickname, customer_path(customer.id) %></td
         </tr>
       <% end %>
     </tbody>
