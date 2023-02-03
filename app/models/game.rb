@@ -3,7 +3,10 @@ class Game < ApplicationRecord
   has_many :tags, through: :game_tags
   has_many :game_comments, dependent: :destroy
   has_one_attached :image
-
+  
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :image, presence: true
 
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
