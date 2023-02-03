@@ -1,4 +1,5 @@
 class Public::GamesController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @games = params[:tag_id].present? ? Tag.find(params[:tag_id]).games : Game.all
   end
